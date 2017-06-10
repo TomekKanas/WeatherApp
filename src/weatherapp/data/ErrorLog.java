@@ -1,12 +1,15 @@
-package weatherapp.events;
+package weatherapp.data;
 
 import java.time.LocalDateTime;
 
-public class ErrorEvent extends AppEvent{
+/**
+ * Klasa przechowująca informacje o wystąpieniu błędu.
+ */
+public class ErrorLog {
     private final LocalDateTime timestamp;
     private final Throwable cause;
 
-    public ErrorEvent(Throwable cause) {
+    public ErrorLog(Throwable cause) {
         this.timestamp = LocalDateTime.now();
         this.cause = cause;
     }
@@ -21,6 +24,7 @@ public class ErrorEvent extends AppEvent{
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "ErrorEvent(timestamp=" + this.getTimestamp() + ", cause=" + this.getCause() + ")";
+        return "ErrorLog(timestamp=" + this.getTimestamp() + ", cause=" + this.getCause() + ")";
     }
+
 }

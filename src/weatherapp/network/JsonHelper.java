@@ -5,38 +5,64 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.handler.codec.http.HttpHeaderNames;
-import io.netty.handler.codec.http.HttpHeaderValues;
-import io.netty.util.CharsetUtil;
-import io.reactivex.netty.protocol.http.client.HttpClientRequest;
 
+/**
+ * Pomocnicza klasa do parsowania JSONa.
+ */
 public class JsonHelper {
 
-	/*
-	 * A handful of helper methods for parsing string into JsonObject. These do
-	 * not do the actual heavy lifting, we delegate the job to Google's GSON
-	 * library and provide some wrappers here.
-	 */
+    /**
+     * Wyciąga wewnętrzny obiekt w formacie JSON
+     * @param o obiekt JSON
+     * @param key nazwa wewnętrznego obiektu
+     * @return obiekt JSON
+     */
+    public static JsonObject innerJsonObject(JsonObject o, String key)
+    {
+        if(o == null) return null;
+        JsonElement je = o.get(key);
+        if(je == null) return null;
+        return o.get(key).getAsJsonObject();
+    }
 
+    /**
+     * Wyciąga pole typu float z obiektu typu JSON
+     * @param o obiekt JSON
+     * @param key nazwa wewnętrznego pola
+     * @return liczba rzeczywista
+     */
+    public static Float innerFloat(JsonObject o, String key)
+    {
+        if(o == null) return null;
+        JsonElement je = o.get(key);
+        if(je == null) return null;
+        return o.get(key).getAsFloat();
+    }
+
+    /**
+     * Parsuje tekst jako obiekt w formacie JSON
+     * @param s tekst
+     * @return zparsowany obiekt
+     */
     public static JsonObject asJsonObject(String s) {
         return parse(s).getAsJsonObject();
     }
 
+    /**
+     * Parsuje tekst jako tablicę obiektów w formacie JSON
+     * @param s tekst
+     * @return tablica zparsowanych obiektów
+     */
     public static JsonArray asJsonArray(String s) {
         return parse(s).getAsJsonArray();
     }
 
+    /**
+     *  Parsuje tekst w formacie JSON
+     * @param s tekst
+     * @return obiekt zparsowany
+     */
     private static JsonElement parse(String s) {
         return new JsonParser().parse(s);
     }
-
-    public static HttpClientRequest<ByteBuf> withJsonHeader(HttpClientRequest<ByteBuf> request) {
-		/*
-		 * Adds Accept: application/json header to an HTTP request
-		 */
-        return request.withHeader(HttpHeaderNames.ACCEPT.toString(), HttpHeaderValues.APPLICATION_JSON.toString())
-                .withHeader(HttpHeaderNames.ACCEPT_CHARSET.toString(), CharsetUtil.UTF_8.name());
-    }
-
 }

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="weatherapp.Controller">
    <children>
       <GridPane layoutY="9.0" prefHeight="400.0" prefWidth="328.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-            <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" />
+            <ColumnConstraints hgrow="ALWAYS" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -56,20 +53,20 @@
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Label fx:id="WindDirectionLabel" layoutX="155.0" layoutY="195.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="WindDirectionLabel" layoutX="155.0" layoutY="195.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Label fx:id="WindForceLabel" layoutX="155.0" layoutY="162.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="WindForceLabel" layoutX="155.0" layoutY="162.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Label layoutX="37.0" layoutY="154.0" text="Siła wiatru" GridPane.rowIndex="4">
+            <Label layoutX="37.0" layoutY="154.0" text="Siła wiatru" GridPane.rowIndex="5">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="193.0" text="Kierunek wiatru" GridPane.rowIndex="5">
+            <Label layoutX="36.0" layoutY="193.0" text="Kierunek wiatru" GridPane.rowIndex="6">
                <font>
                   <Font size="15.0" />
                </font>
@@ -79,42 +76,55 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Jakość powietrza" GridPane.rowIndex="6">
+            <Label text="Jakość powietrza" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Poziom pyłów PM2.5" GridPane.rowIndex="7">
+            <Label text="Poziom pyłów PM2.5" GridPane.rowIndex="8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Poziom pyłów PM10" GridPane.rowIndex="8">
+            <Label text="Poziom pyłów PM10" GridPane.rowIndex="9">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="DustLevel25Label" text="-" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="DustLevel25Label" text="-" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="DustLevel10Label" text="-" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="DustLevel10Label" text="-" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="ActuallizeButton" mnemonicParsing="false" text="Aktualizuj" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <HBox GridPane.rowIndex="9">
+            <Button fx:id="ActualizeButton" mnemonicParsing="false" text="Aktualizuj" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <HBox GridPane.rowIndex="10">
                <children>
                   <Label prefHeight="46.0" prefWidth="154.0" text="Ostatnia aktualizacja:" GridPane.rowIndex="9" />
-                  <Label fx:id="LastActuallizationLabel" alignment="CENTER" prefHeight="46.0" prefWidth="164.0" text="-" GridPane.rowIndex="9">
+                  <Label fx:id="LastActualizationLabel" alignment="CENTER" prefHeight="46.0" prefWidth="164.0" text="-" GridPane.rowIndex="9">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
                </children>
             </HBox>
-            <ToggleButton fx:id="ChangeSourceButton" mnemonicParsing="false" text="Zmień źródło" GridPane.columnIndex="1" />
+            <ToggleButton fx:id="ChangeSourceButton" minWidth="122.0" mnemonicParsing="false" text="openweathermap.org" GridPane.columnIndex="1">
+               <font>
+                  <Font size="10.0" />
+               </font></ToggleButton>
+            <Label text="Wilgotność" GridPane.rowIndex="4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="HumidityLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </children>

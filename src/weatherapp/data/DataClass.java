@@ -1,11 +1,14 @@
-package weatherapp.events;
+package weatherapp.data;
 
 import java.time.LocalDateTime;
 
-public class DataEvent extends AppEvent {
+/**
+ * Standardowa klasa na dane.
+ */
+public abstract class DataClass {
     private final LocalDateTime timestamp;
 
-    public DataEvent() {
+    public DataClass() {
         timestamp = LocalDateTime.now();
     }
 
@@ -15,7 +18,7 @@ public class DataEvent extends AppEvent {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "DataEvent(timestamp=" + this.getTimestamp() + ")";
+        return "DataClass(timestamp=" + this.getTimestamp() + ")";
     }
 
 }
